@@ -1,0 +1,753 @@
+<!doctype html>
+<html lang="en">
+<head>
+<base target="_blank">
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>AZ-104 — September Study Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;1,7..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+:root{
+  --bg:#F2F5F9; --surface:#FFFFFF; --surface-2:#E9EEF5;
+  --ink:#111823; --ink-2:#3B4757; --muted:#66748A; --rule:#D6DEE9;
+  --accent:#2340C4; --accent-soft:#DDE3FA;
+  --good:#0F6B4F; --good-soft:#D6EDE3;
+  --warn:#9A5407; --warn-soft:#F7E7CE;
+  --crit:#A32217; --crit-soft:#F7DEDB;
+  --shadow:0 1px 2px rgba(17,24,35,.06), 0 8px 24px -16px rgba(17,24,35,.34);
+  --f-display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --f-body:"Literata",Georgia,"Times New Roman",serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --step--1:0.8125rem; --step-0:1rem; --step-1:1.1875rem; --step-3:2rem; --step-4:2.75rem;
+  --measure:66ch;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0D1219; --surface:#141C26; --surface-2:#1B2531;
+    --ink:#E8EEF6; --ink-2:#C0CBD9; --muted:#8FA0B4; --rule:#26313F;
+    --accent:#8AA0FF; --accent-soft:#1E2A4C;
+    --good:#5FD0A6; --good-soft:#123329;
+    --warn:#E4B168; --warn-soft:#3A2A12;
+    --crit:#F09186; --crit-soft:#3B1C18;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px -18px rgba(0,0,0,.9);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0D1219; --surface:#141C26; --surface-2:#1B2531;
+  --ink:#E8EEF6; --ink-2:#C0CBD9; --muted:#8FA0B4; --rule:#26313F;
+  --accent:#8AA0FF; --accent-soft:#1E2A4C;
+  --good:#5FD0A6; --good-soft:#123329;
+  --warn:#E4B168; --warn-soft:#3A2A12;
+  --crit:#F09186; --crit-soft:#3B1C18;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px -18px rgba(0,0,0,.9);
+}
+
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:var(--step-0);line-height:1.6;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:62rem;margin:0 auto;padding:clamp(1.5rem,4vw,3.5rem) clamp(1rem,4vw,2.5rem) 5rem;display:flex;flex-direction:column;gap:clamp(2.5rem,5vw,4rem);}
+h1,h2,h3,h4{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.14;letter-spacing:-0.015em;}
+p{margin:0;max-width:var(--measure);}
+a{color:var(--accent);text-underline-offset:.18em;text-decoration-thickness:.06em;}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px;}
+ul{margin:0;padding-left:1.15rem;max-width:var(--measure);}
+li{margin:.28rem 0;}
+strong{font-weight:600;color:var(--ink);}
+em{font-style:italic;}
+code{font-family:var(--f-mono);font-size:.88em;background:var(--surface-2);padding:.1em .34em;border-radius:3px;}
+
+.eyebrow{font-family:var(--f-mono);font-size:var(--step--1);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500;}
+
+.masthead{display:flex;flex-direction:column;gap:.8rem;}
+.masthead h1{font-size:var(--step-4);font-weight:800;letter-spacing:-0.035em;}
+.lede{font-size:var(--step-1);color:var(--ink-2);line-height:1.55;}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:6px;overflow:hidden;margin-top:.5rem;}
+.fact{background:var(--surface);padding:.85rem 1rem;display:flex;flex-direction:column;gap:.2rem;}
+.fact dt{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+.fact dd{margin:0;font-family:var(--f-display);font-weight:700;font-size:1.15rem;font-variant-numeric:tabular-nums;}
+
+section{display:flex;flex-direction:column;gap:1.25rem;}
+.sec-head{display:flex;flex-direction:column;gap:.4rem;border-top:2px solid var(--ink);padding-top:.7rem;}
+.sec-head h2{font-size:var(--step-3);font-weight:700;}
+.sec-head p{color:var(--muted);}
+
+.domains{display:flex;flex-direction:column;gap:.55rem;}
+.domain{display:grid;grid-template-columns:1fr 4.2rem;align-items:center;gap:.9rem;}
+.domain-name{font-size:var(--step--1);color:var(--ink-2);display:flex;flex-direction:column;gap:.3rem;}
+.bar{height:7px;background:var(--surface-2);border-radius:99px;overflow:hidden;}
+.bar span{display:block;height:100%;background:var(--accent);border-radius:99px;}
+.domain-pct{font-family:var(--f-mono);font-size:var(--step--1);font-variant-numeric:tabular-nums;color:var(--muted);text-align:right;}
+
+.verdicts{display:flex;flex-direction:column;gap:.9rem;}
+.verdict{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:1.1rem 1.25rem;display:flex;flex-direction:column;gap:.55rem;box-shadow:var(--shadow);}
+.verdict-top{display:flex;flex-wrap:wrap;align-items:baseline;gap:.7rem;}
+.verdict h3{font-size:var(--step-1);font-weight:700;}
+.chip{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;padding:.22rem .5rem;border-radius:3px;white-space:nowrap;}
+.chip.keep{background:var(--good-soft);color:var(--good);}
+.chip.fix{background:var(--warn-soft);color:var(--warn);}
+.chip-h{font-family:var(--f-mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;padding:.15rem .4rem;border-radius:3px;background:var(--warn-soft);color:var(--warn);vertical-align:.15em;}
+.chip.wrong{background:var(--crit-soft);color:var(--crit);}
+.verdict p,.verdict li{font-size:.94rem;color:var(--ink-2);}
+
+.split{display:grid;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:6px;overflow:hidden;}
+.half{background:var(--surface);padding:1.15rem 1.25rem;display:flex;flex-direction:column;gap:.55rem;}
+.half h3{font-size:1.05rem;font-weight:700;}
+.half p,.half li{font-size:.9rem;color:var(--ink-2);}
+.half .eyebrow{color:var(--accent);}
+.tick{list-style:none;padding-left:0;display:flex;flex-direction:column;gap:.3rem;}
+.tick li{padding-left:1.1rem;position:relative;}
+.tick li::before{content:"";position:absolute;left:0;top:.62em;width:.42rem;height:.42rem;border-radius:1px;background:var(--accent);}
+
+.day-block{background:var(--surface);border:1px solid var(--rule);border-radius:6px;overflow:hidden;}
+.day-row{display:grid;grid-template-columns:5.5rem 1fr;gap:1rem;padding:.8rem 1.1rem;border-bottom:1px solid var(--rule);align-items:baseline;}
+.day-row:last-child{border-bottom:0;}
+.day-row .t{font-family:var(--f-mono);font-size:.82rem;font-variant-numeric:tabular-nums;color:var(--accent);font-weight:500;}
+.day-row .d{font-size:.94rem;color:var(--ink-2);}
+.day-row .d b{font-family:var(--f-display);font-weight:600;color:var(--ink);display:block;font-size:.95rem;}
+
+.weeks{display:flex;flex-direction:column;gap:2rem;}
+.week{display:flex;flex-direction:column;gap:0;}
+.week-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:.5rem 1rem;padding:.75rem 1.1rem;background:var(--ink);color:var(--bg);border-radius:6px 6px 0 0;}
+.week-head .wn{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;opacity:.72;}
+.week-head h3{font-size:1.15rem;font-weight:700;color:var(--bg);}
+.week-head .wd{font-family:var(--f-mono);font-size:.78rem;margin-left:auto;opacity:.72;font-variant-numeric:tabular-nums;}
+.week-body{border:1px solid var(--rule);border-top:0;border-radius:0 0 6px 6px;background:var(--surface);overflow:hidden;}
+.dayrow{display:grid;grid-template-columns:6.2rem 1fr;gap:1.1rem;padding:1.05rem 1.1rem;border-bottom:1px solid var(--rule);}
+.dayrow:last-child{border-bottom:0;}
+.dayrow .stamp{display:flex;flex-direction:column;gap:.1rem;}
+.dayrow .dnum{font-family:var(--f-display);font-weight:800;font-size:1.05rem;font-variant-numeric:tabular-nums;letter-spacing:-.02em;}
+.dayrow .ddate{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);font-variant-numeric:tabular-nums;}
+.dayrow .body{display:flex;flex-direction:column;gap:.5rem;}
+.dayrow h4{font-size:1rem;font-weight:700;}
+.dayrow p{font-size:.9rem;color:var(--ink-2);}
+.milestone{background:var(--surface-2);}
+.milestone .dnum{color:var(--accent);}
+
+/* watch / read / gap / build rows */
+.io{display:grid;grid-template-columns:3.9rem 1fr;gap:.7rem;font-size:.87rem;align-items:baseline;color:var(--ink-2);}
+.io .k{font-family:var(--f-mono);font-size:.63rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;padding-top:.15em;}
+.k.watch{color:var(--accent);}
+.k.read{color:var(--good);}
+.k.gapk{color:var(--crit);}
+.k.build{color:var(--warn);}
+.io .v{max-width:var(--measure);}
+.io .v .dur{font-family:var(--f-mono);font-size:.78rem;color:var(--muted);font-variant-numeric:tabular-nums;}
+.vid{font-family:var(--f-mono);font-size:.8rem;font-weight:600;color:var(--accent);}
+.gapline{background:var(--crit-soft);border-radius:4px;padding:.45rem .6rem;}
+
+.callout{border:1px solid var(--rule);border-left:3px solid var(--warn);background:var(--surface);padding:1rem 1.2rem;border-radius:0 6px 6px 0;display:flex;flex-direction:column;gap:.5rem;max-width:var(--measure);}
+.callout h3{font-size:1rem;font-weight:700;}
+.callout p,.callout li{font-size:.92rem;color:var(--ink-2);}
+.callout.info{border-left-color:var(--accent);}
+.callout.bad{border-left-color:var(--crit);}
+
+.tbl-wrap{overflow-x:auto;border:1px solid var(--rule);border-radius:6px;background:var(--surface);}
+table{border-collapse:collapse;width:100%;font-size:.88rem;min-width:36rem;}
+th,td{text-align:left;padding:.6rem .9rem;border-bottom:1px solid var(--rule);vertical-align:top;}
+th{font-family:var(--f-display);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;}
+tr:last-child td{border-bottom:0;}
+td.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap;font-size:.82rem;}
+td.no{color:var(--crit);font-weight:600;}
+td.yes{color:var(--good);}
+
+.legend{display:flex;flex-wrap:wrap;gap:1.1rem;font-size:.8rem;color:var(--muted);align-items:center;}
+.legend span{display:flex;align-items:center;gap:.4rem;}
+.swatch{width:.7rem;height:.7rem;border-radius:2px;display:inline-block;}
+
+footer{border-top:1px solid var(--rule);padding-top:1.25rem;color:var(--muted);font-size:.85rem;display:flex;flex-direction:column;gap:.4rem;}
+footer a{color:var(--muted);}
+footer ul{padding-left:1.1rem;}
+
+@media (max-width:36rem){
+  .dayrow{grid-template-columns:1fr;gap:.5rem;}
+  .dayrow .stamp{flex-direction:row;align-items:baseline;gap:.6rem;}
+  .day-row{grid-template-columns:1fr;gap:.2rem;}
+  .io{grid-template-columns:1fr;gap:.15rem;}
+  .domain{grid-template-columns:1fr 3.5rem;}
+}
+
+
+.ref{border:1px solid var(--rule);border-radius:6px;background:var(--surface);margin-bottom:.6rem;}
+.ref>summary{cursor:pointer;list-style:none;padding:.8rem 1.1rem;display:flex;flex-wrap:wrap;
+  align-items:baseline;gap:.3rem 1rem;border-radius:6px;}
+.ref>summary::-webkit-details-marker{display:none;}
+.ref>summary::before{content:"+";font-family:var(--f-mono);font-weight:600;color:var(--accent);
+  margin-right:.5rem;width:.7rem;display:inline-block;}
+.ref[open]>summary::before{content:"\2013";}
+.ref>summary:hover{background:var(--surface-2);}
+.ref>summary:focus-visible{outline:2px solid var(--accent);outline-offset:-2px;}
+.ref-t{font-family:var(--f-display);font-weight:700;font-size:1rem;}
+.ref-h{font-size:.85rem;color:var(--muted);}
+.ref-body{padding:0 1.1rem 1.2rem;display:flex;flex-direction:column;gap:1.1rem;border-top:1px solid var(--rule);padding-top:1.1rem;}
+.pbar-today{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
+  background:var(--accent);color:var(--surface);border:0;padding:.3rem .6rem;border-radius:4px;cursor:pointer;}
+:root[data-theme="dark"] .pbar-today{color:#0D1219;}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .pbar-today{color:#0D1219;}}
+.pbar-today[hidden]{display:none;}
+
+
+.bk{margin-top:.55rem;border:1px solid var(--rule);border-radius:6px;background:var(--surface-2);padding:.7rem .8rem;
+  display:none;flex-direction:column;gap:.5rem;}
+.bk[data-open="1"]{display:flex;}
+.bk p{font-size:.82rem;color:var(--ink-2);margin:0;max-width:none;}
+.bk textarea{width:100%;min-height:4.5rem;font-family:var(--f-mono);font-size:.72rem;line-height:1.5;
+  border:1px solid var(--rule);border-radius:4px;background:var(--surface);color:var(--ink);padding:.5rem;resize:vertical;}
+.bk-row{display:flex;gap:.5rem;flex-wrap:wrap;}
+.bk button{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;
+  border:1px solid var(--rule);background:var(--surface);color:var(--ink-2);padding:.3rem .6rem;border-radius:4px;cursor:pointer;}
+.bk button:hover{border-color:var(--accent);color:var(--accent);}
+.bk .msg{font-family:var(--f-mono);font-size:.7rem;color:var(--good);}
+.pbar-sync{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);}
+.pbar-sync.okc{color:var(--good);}
+.pbar-sync.warnc{color:var(--warn);}
+.pbar-bk{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
+  background:none;border:1px solid var(--rule);color:var(--muted);padding:.28rem .6rem;border-radius:4px;cursor:pointer;}
+.pbar-bk:hover{color:var(--ink);}
+.pbar-reset{margin-left:0;}
+.pbar-top{align-items:center;}
+.pbar-spacer{margin-left:auto;}
+
+/* ---------- progress + checkboxes ---------- */
+.pbar{
+  position:sticky; top:0; z-index:60;
+  background:var(--bg);
+  padding:.7rem 0 .75rem;
+  margin:-.25rem 0 .5rem;
+  border-bottom:1px solid var(--rule);
+  display:flex; flex-direction:column; gap:.45rem;
+}
+.pbar-top{display:flex;align-items:baseline;gap:.75rem;flex-wrap:wrap;}
+.pbar-pct{font-family:var(--f-display);font-weight:800;font-size:1.35rem;letter-spacing:-.02em;font-variant-numeric:tabular-nums;}
+.pbar-txt{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);}
+.pbar-reset{margin-left:auto;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
+  background:none;border:1px solid var(--rule);color:var(--muted);padding:.28rem .6rem;border-radius:4px;cursor:pointer;}
+.pbar-reset:hover{color:var(--ink);border-color:var(--rule-strong,var(--muted));}
+.pbar-track{height:9px;background:var(--surface-2);border-radius:99px;overflow:hidden;}
+.pbar-fill{height:100%;width:0;background:var(--accent);border-radius:99px;transition:width .35s ease;}
+@media (prefers-reduced-motion:reduce){.pbar-fill{transition:none;}}
+
+.ck{
+  appearance:none;-webkit-appearance:none;
+  flex:0 0 auto; width:1.05rem;height:1.05rem;margin:0;
+  border:1.5px solid var(--rule-strong,var(--muted));border-radius:4px;
+  background:var(--surface); cursor:pointer; position:relative;
+  transition:background .12s ease,border-color .12s ease;
+}
+.ck:hover{border-color:var(--accent);}
+.ck:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+.ck[aria-checked="true"]{background:var(--accent);border-color:var(--accent);}
+.ck[aria-checked="true"]::after{
+  content:"";position:absolute;left:.3rem;top:.11rem;width:.26rem;height:.55rem;
+  border:solid var(--surface);border-width:0 2px 2px 0;transform:rotate(42deg);
+}
+:root[data-theme="dark"] .ck[aria-checked="true"]::after{border-color:#0D1219;}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .ck[aria-checked="true"]::after{border-color:#0D1219;}}
+
+.io{grid-template-columns:1.05rem 3.9rem 1fr;}
+.io.done .v,.io.done .k{opacity:.42;}
+.dayrow .body>p.tickable{display:grid;grid-template-columns:1.05rem 1fr;gap:.7rem;align-items:start;}
+.dayrow .body>p.tickable.done>span{opacity:.42;}
+
+.daymeta{display:flex;align-items:center;gap:.4rem;margin-top:.3rem;}
+.daycount{font-family:var(--f-mono);font-size:.68rem;color:var(--muted);font-variant-numeric:tabular-nums;}
+.dayrow.day-done{background:var(--good-soft);}
+.dayrow.day-was-done{background:var(--good-soft);opacity:.72;}
+.dayrow.day-was-done .dnum{color:var(--good);}
+.done-tag{font-family:var(--f-mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;background:var(--good);color:var(--surface);padding:.1rem .35rem;border-radius:3px;display:inline-block;margin-top:.25rem;}
+.dayrow.day-done .dnum{color:var(--good);}
+.dayrow.today{box-shadow:inset 3px 0 0 var(--accent);}
+.dayrow.flash{animation:flashrow 1.4s ease;}
+@keyframes flashrow{0%,100%{background:transparent}18%{background:var(--accent-soft)}}
+@media (prefers-reduced-motion:reduce){.dayrow.flash{animation:none;outline:2px solid var(--accent);outline-offset:-2px;}}
+.today-tag{font-family:var(--f-mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;
+  background:var(--accent);color:var(--surface);padding:.1rem .35rem;border-radius:3px;display:inline-block;margin-top:.25rem;}
+:root[data-theme="dark"] .today-tag{color:#0D1219;}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .today-tag{color:#0D1219;}}
+.week-head .wprog{font-family:var(--f-mono);font-size:.72rem;opacity:.72;font-variant-numeric:tabular-nums;}
+.nostore{background:var(--warn-soft);color:var(--warn);font-size:.8rem;padding:.5rem .7rem;border-radius:4px;}
+@media (max-width:36rem){ .io{grid-template-columns:1.05rem 1fr;} .io .k{grid-column:2;} .io .v{grid-column:2;} }
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
+.calendar-note{padding:1rem 1.1rem;font-size:.9rem;color:var(--ink-2);border-bottom:1px solid var(--rule);max-width:none;}
+</style>
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0}
+  img,svg,video{max-width:100%;height:auto;display:block}
+  button,input,textarea,select{font:inherit;color:inherit}
+  dl,dd,figure,blockquote{margin:0}
+  table{border-collapse:collapse}
+  details summary{cursor:pointer}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="masthead">
+  <div class="eyebrow">Exam AZ-104 · Microsoft Azure Administrator</div>
+  <h1>AZ-104 — September Study Plan</h1>
+  <p class="lede">A structured AZ-104 study schedule: course videos, Microsoft Learn reading and guided practice. Track completion in your browser and export a backup when switching devices.</p>
+  <dl class="facts"><div class="fact"><dt>Daily target</dt><dd>About 5 hours</dd></div><div class="fact"><dt>Study order</dt><dd>Video → Learn → Practice</dd></div></dl>
+</header>
+
+<section>
+  <div class="sec-head">
+    <h2>Your study schedule</h2>
+    <p id="plan">Follow the topics in order. Allow extra time for practice and understanding. Each dated block groups the work for one study session.</p>
+  </div>
+  
+
+  <div class="legend">
+    <span><span class="swatch" style="background:var(--accent)"></span> Watch — course video</span>
+    <span><span class="swatch" style="background:var(--good)"></span> Read — Microsoft Learn module</span>
+    <span><span class="swatch" style="background:var(--crit)"></span> Gap — no teaching resource, use docs</span>
+    <span><span class="swatch" style="background:var(--warn)"></span> Reinforce — Moe demo + Learn exercise</span>
+  </div>
+
+
+
+  <div class="weeks"><div class="week"><div class="week-head"><span class="wn">Topics 1–7</span><h3>Identity and governance foundations</h3><span class="wd">Foundation topics</span></div><div class="week-body">        <div class="dayrow milestone">
+          <div class="stamp"><div class="dnum">01</div><div class="ddate">Sun 23 Aug</div></div>
+          <div class="body">
+            <h4>Set up a practice environment and review exam objectives</h4>
+            
+            
+            <div class="io"><span class="k watch">Watch</span><span class="v"><a href="https://www.youtube.com/watch?v=D3f81Z8lLM0" title="[1] Az 104 - Introduction to Azure Administration: Your Ultimate Beginner's Course Arabic | شرح">[1] Az 104 - Introduction to Azure Administration: Your Ultimate Beginner's Course</a> <span class="dur">Total video runtime: 29m 47s (pauses and practice are extra).</span></span></div>
+            <div class="io"><span class="k read">Read</span><span class="v">The <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-104">skills-measured objective list</a>, end to end. Print it — it is your checklist for the month.</span></div>
+            <div class="io"><span class="k build">Build</span><span class="v">Take the <a href="https://learn.microsoft.com/en-us/credentials/certifications/exams/az-104/practice/assessment?assessment-type=practice&amp;assessmentId=21">official practice assessment</a> <strong>cold</strong>, before studying — use the result to identify learning priorities. Visit <a href="https://aka.ms/examdemo">the exam sandbox</a>. Check current spend in the practice subscription, then create a resource group and a budget alert. Deploy one small VM in your intended region to confirm nothing blocks it. Then run Lab Desk lab 000 — a subscription and tenant sanity check.<br><span class="dur">Lab Desk: <a href="https://az-104-lab-desk.pages.dev/#/domain/0">000 — stand up a safe practice subscription</a></span></span></div>
+          </div>
+        </div>
+        <div class="dayrow">
+          <div class="stamp"><div class="dnum">02</div><div class="ddate">Mon 24 Aug</div></div>
+          <div class="body">
+            <h4>Tenant, subscription, directory</h4>
+            <div class="io"><span class="k watch">Watch</span><span class="v"><a href="https://www.youtube.com/watch?v=2HtkGub91-A" title="[2] AZ 104 - Azure Subscription vs. Entra ID: Understanding the Key Difference Arabic | شرح">[2] AZ 104 - Azure Subscription vs. Entra ID: Understanding the Key Difference</a> · <a href="https://www.youtube.com/watch?v=cJ3frSZNkYU" title="[3] AZ 104 - Azure Administrator | Getting Started with Microsoft Entra Id Arabic | شرح">[3] AZ 104 - Azure Administrator | Getting Started with Microsoft Entra Id</a> <span class="dur">Total video runtime: 53m 44s (pauses and practice are extra).</span></span></div>
+            <div class="io"><span class="k read">Read</span><span class="v"><a href="https://learn.microsoft.com/en-us/training/modules/understand-azure-active-directory/">Understand Microsoft Entra ID</a> · <a href="https://learn.microsoft.com/en-us/training/modules/describe-core-architectural-components-of-azure/">Describe the core architectural components of Azure</a></span></div>
+            <div class="io"><span class="k build">Build</span><span class="v"><strong>Your tenant.</strong> Check that the tenant has the required roles and licence for the identity exercises.</span></div>
+          </div>
+        </div>
+        <div class="dayrow">
+          <div class="stamp"><div class="dnum">03</div><div class="ddate">Wed 2 Sep</div></div>
+          <div class="body">
+            <h4>Users, groups, SSPR <span class=chip-h>heavy</span></h4>
+            <div class="io"><span class="k watch">Watch</span><span class="v"><a href="https://www.youtube.com/watch?v=S9rnlob28PE" title="[4] AZ 104 - Azure Administrator | Creating Users in Microsoft Entra ID Arabic | شرح">[4] AZ 104 - Azure Administrator | Creating Users in Microsoft Entra ID</a> · <a href="https://www.youtube.com/watch?v=ymDqLgw3TDE" title="[5] AZ 104 -  Azure Administrator | Creating Groups in Microsoft Entra Arabic | شرح">[5] AZ 104 - Azure Administrator | Creating Groups in Microsoft Entra</a> · <a href="https://www.youtube.com/watch?v=WZVFir3JTVQ" title="[7] AZ 104 - Microsoft Entra Id Self-Service Password Arabic | شرح">[7] AZ 104 - Microsoft Entra Id Self-Service Password</a> <span class="dur">Total video runtime: 77m 8s (pauses and practice are extra).</span> <strong>Existing decision retained:</strong> episode [6] on on-premises sync remains optional/skipped; no change to your completed work.</span></div>
+            <div class="io"><span class="k read">Read</span><span class="v"><a href="https://learn.microsoft.com/en-us/training/modules/create-configure-manage-identities/">Create, configure, and manage identities</a> · <a href="https://learn.microsoft.com/en-us/training/modules/allow-users-reset-their-password/">Allow users to reset their password with Entra SSPR</a></span></div>
+            <div class="io"><span class="k gapk">Gap</span><span class="v gapline">Neither covers <strong>licence management</strong> or <strong>external/guest users</strong> properly — both objective bullets. <a href="https://learn.microsoft.com/en-us/entra/identity/">Entra ID docs</a> on group-based licensing and B2B guest invitations.</span></div>
+            <div class="io"><span class="k build">Build</span><span class="v"><strong>Your tenant.</strong> Users, a dynamic group with a membership rule, a guest invite, SSPR configured. <strong>These four sources overlap heavily</strong> — the Learn module carries five hands-on exercises of its own, and Lab 01 covers the same ground again. Do the module's exercises <em>in your own tenant</em> and that is this Build line done; then run Lab 01 once as the consolidated pass; treat Lab Desk D1 as a top-up only if something felt shaky. Doing all four in full is the same task three times.<br><span class="dur">Official lab: <a href="https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/">Lab 01 — Manage Microsoft Entra ID Identities</a></span><br><span class="dur">Lab Desk: <a href="https://az-104-lab-desk.pages.dev/#/domain/1">domain D1, identity section</a></span></span></div>
+          </div>
+        </div>
+        <div class="dayrow">
+          <div class="stamp"><div class="dnum">04</div><div class="ddate">Thu 3 Sep</div></div>
+          <div class="body">
+            <h4>Management groups and subscriptions</h4>
+            <div class="io"><span class="k watch">Watch</span><span class="v"><a href="https://www.youtube.com/watch?v=y_K1eTd1AGA" title="[8] AZ 104 - Create Azure Management Groups Arabic | شرح">[8] AZ 104 - Create Azure Management Groups</a> · <a href="https://www.youtube.com/watch?v=WpyD8a_L9rU" title="[9] AZ 104 - How to Manage Azure Subscriptions Arabic | شرح">[9] AZ 104 - How to Manage Azure Subscriptions</a> <span class="dur">Total video runtime: 50m 21s (pauses and practice are extra).</span></span></div>
+            <div class="io"><span class="k read">Read</span><span class="v">No AZ-104 module covers the scope hierarchy cleanly. Videos plus the <a href="https://learn.microsoft.com/en-us/azure/governance/management-groups/">management groups docs</a>.</span></div>
+            <div class="io"><span class="k build">Build</span><span class="v"><strong>Your tenant.</strong> Create a management group and move your subscription into it. Tenant → management group → subscription → resource group, in your hands rather than on a slide.<br><span class="dur">Official lab: <a href="https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/">Lab 02a — Manage Subscriptions and RBAC</a></span></span></div>
+          </div>
+        </div>
+        <div class="dayrow">
+          <div class="stamp"><div class="dnum">05</div><div class="ddate">Fri 4 Sep</div></div>
+          <div class="body">
+            <h4>RBAC</h4>
+            <div class="io"><span class="k watch">Watch</span><span class="v"><a href="https://www.youtube.com/watch?v=JIGKDBVBZ20" title="[10] AZ 104 - What is Azure Role Based Access Control Arabic | شرح">[10] AZ 104 - What is Azure Role Based Access Control</a> · <a href="https://www.youtube.com/watch?v=V3hBimxbHxg" title="[11] AZ 104 - Step-by-Step Azure RBAC Configuration Arabic | شرح">[11] AZ 104 - Step-by-Step Azure RBAC Configuration</a> <span class="dur">Total video runtime: 49m 53s (pauses and practice are extra).</span></span></div>
+            <div class="io"><span class="k read">Read</span><span class="v"><a href="https://learn.microsoft.com/en-us/training/modules/secure-azure-resources-with-rbac/">Secure your Azure resources with Azure RBAC</a></span></div>
+            <div class="io"><span class="k build">Build</span><span class="v"><strong>Practice subscription.</strong> Use a subscription where you have the required permissions. Assign roles at three scopes to one user, then use Check access to predict the outcome <em>before</em> you look. Owner vs. Contributor vs. User Access Administrator, cold.<br><span class="dur">Official lab: <a href="https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/">Lab 02a — Manage Subscriptions and RBAC</a></span> (second half)</span></div>
+          </div>
+        </div>
+        <div class="dayrow">
+          <div class="stamp"><div class="dnum">06</div><div class="ddate">Sat 5 Sep</div></div>
+          <div class="body">
+            <h4>Locks, tags, Policy, and cost</h4>
+            <div class="io"><span class="k watch">Watch</span><span class="v"><a href="https://www.youtube.com/watch?v=alV24naP8Xc" title="[12] AZ 104 Prevent Costly Mistakes with Azure Resource Locks Arabic | شرح">[12] AZ 104 Prevent Costly Mistakes with Azure Resource Locks</a> · <a href="https://www.youtube.com/watch?v=w-nfs3S8CBE" title="[13] AZ 104 Azure Resource Tags: Organize Your Cloud Like a Pro! Arabic | شرح">[13] AZ 104 Azure Resource Tags: Organize Your Cloud Like a Pro!</a> · <a href="https://www.youtube.com/watch?v=bXyEVvzbs2Q" title="[14] AZ 104 How to Use Azure Policy for Cloud Compliance &amp; Governance Arabic شرح">[14] AZ 104 How to Use Azure Policy for Cloud Compliance &amp; Governance</a> <span class="dur">Total video runtime: 47m 9s (pauses and practice are extra).</span></span></div>
+            <div class="io"><span class="k read">Read</span><span class="v"><a href="https://learn.microsoft.com/en-us/training/modules/sovereignty-policy-initiatives/">Azure Policy initiatives</a></span></div>
+            <div class="io"><span class="k gapk">Gap</span><span class="v gapline"><strong>Cost alerts, budgets and Advisor</strong> appear only in the AZ-900 half of the playlist but are an AZ-104 objective bullet. <a href="https://learn.microsoft.com/en-us/azure/cost-management-billing/">Cost Management docs</a>.</span></div>
+            <div class="io"><span class="k build">Build</span><span class="v"><strong>Practice environment.</strong> Policy at management-group scope in your tenant; a second assignment at subscription scope in a practice subscription. Then try to break both. CanNotDelete lock and what it stops. Settle <strong>Policy vs. RBAC</strong>.<br><span class="dur">Official lab: <a href="https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/">Lab 02b — Manage Governance via Azure Policy</a></span></span></div>
+          </div>
+        </div>
+        <div class="dayrow">
+          <div class="stamp"><div class="dnum">07</div><div class="ddate">Sun 6 Sep</div></div>
+          <div class="body">
+            <h4>Virtual networks and IP addressing</h4>
+            <div class="io"><span class="k watch">Watch</span><span class="v"><a href="https://www.youtube.com/watch?v=opoG2W21jgE" title="[15] AZ 104 What is Azure VNET? A Beginner's Guide to Virtual Networks -Arabic">[15] AZ 104 What is Azure VNET? A Beginner's Guide to Virtual Networks</a> · <a href="https://www.youtube.com/watch?v=6EC3BIwcxhQ" title="[16] AZ 104 Step by step: How to create Azure VNET Arabic شرح">[16] AZ 104 Step by step: How to create Azure VNET</a> · <a href="https://www.youtube.com/watch?v=2zz53oQHryc" title="[17] AZ 104 Azure Public vs Private IP: Key Differences &amp; Setup Guide Arabic | شرح">[17] AZ 104 Azure Public vs Private IP: Key Differences &amp; Setup Guide</a> <span class="dur">Total video runtime: 64m 48s (pauses and practice are extra).</span></span></div>
+            <div class="io"><span class="k read">Read</span><span class="v"><a href="https://learn.microsoft.com/en-us/training/modules/configure-virtual-networks/">Configure virtual networks</a></span></div>
+            <div class="io"><span class="k build">Build</span><span class="v"><strong>Practice subscription.</strong> Plan an address space on paper first, then build it. Basic vs. Standard public IP, static vs. dynamic — know which pairings are legal.<br><span class="dur">Official lab: <a href="https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/">Lab 04 — Implement Virtual Networking</a></span></span></div>
+          </div>
+        </div></div></div><div class="week"><div class="week-head"><h3>Topics 8–9 · Network security and routes</h3></div><div class="week-body"><div class="dayrow" data-progress-id="sep9-day-8"><div class="stamp"><div class="dnum">08</div><div class="ddate">Wed 9 Sep</div></div><div class="body"><h4>NSGs, effective rules and ASGs</h4><div class="io"><span class="k watch">Watch</span><span class="v"><a href="https://www.youtube.com/watch?v=gls-xTPiBbQ" title="[18] AZ 104 How to Create and Configure Network Security Groups  شرح">[18] AZ 104 How to Create and Configure Network Security Groups</a> <span class="dur">Total video runtime: 28m 50s (pauses and practice are extra).</span></span></div>
+<div class="io"><span class="k read">Read</span><span class="v"><a href="https://learn.microsoft.com/en-us/training/modules/configure-network-security-groups/">Configure network security groups</a> — read the units in order, including effective rules and ASGs, then the module assessment. The embedded networking exercise overlaps the lab below; do not run the whole exercise as a second lab.</span></div>
+<div class="io"><span class="k build">Build</span><span class="v"><a href="https://az-104-lab-desk.pages.dev/#/lab/143">Lab 143 — NSG priorities</a> then <a href="https://az-104-lab-desk.pages.dev/#/lab/144">Lab 144 — NIC versus subnet NSG</a>. Treat these as one short NSG practice session. Reuse your existing VNet/NSG; set up a small VM only if connectivity testing requires one. Extra: <a href="https://az-104-lab-desk.pages.dev/#/lab/145">Lab 145 — ASGs</a> if the Learn explanation needs reinforcement.</span></div><p><strong>Done when:</strong> Explain an allow/deny result across NIC and subnet NSGs, rule priority, and what an ASG represents. Suggested total: 4–5 hours, including pauses and recall.</p></div></div>
+<div class="dayrow" data-progress-id="sep9-day-9"><div class="stamp"><div class="dnum">09</div><div class="ddate">Thu 10 Sep</div></div><div class="body"><h4>Peering and routes</h4><div class="io"><span class="k watch">Watch</span><span class="v"><a href="https://www.youtube.com/watch?v=pvIEH1UflvQ" title="[19] AZ 104  A Complete Guide to Azure VNET Peering Arabic شرح">[19] AZ 104 A Complete Guide to Azure VNET Peering</a> · <a href="https://www.youtube.com/watch?v=kDeYT9LeOsw" title="[20] AZ 104 How to create Custom Routes Arabic | شرح">[20] AZ 104 How to create Custom Routes</a> <span class="dur">Total video runtime: 62m 29s (pauses and practice are extra).</span></span></div>
+<div class="io"><span class="k read">Read</span><span class="v"><a href="https://learn.microsoft.com/en-us/training/modules/configure-vnet-peering/">Configure VNet peering</a> · <a href="https://learn.microsoft.com/en-us/training/modules/control-network-traffic-flow-with-routes/">Control traffic with routes</a></span></div>
+<div class="io"><span class="k build">Build</span><span class="v"><strong>Practice:</strong> validate peering and effective routes in a disposable environment when reviewing this topic.</span></div></div></div></div></div><div class="week"><div class="week-head"><h3>Topics 10–16 · Networking and compute</h3></div><div class="week-body"><div class="dayrow" data-progress-id="sep9-day-10"><div class="stamp"><div class="dnum">10</div><div class="ddate">Mon 14 Sep</div></div><div class="body"><h4>Service endpoints and private endpoints</h4><div class="io"><span class="k watch">Watch</span><span class="v"><a href="https://www.youtube.com/watch?v=Ld0g5ZHdn4g" title="[21] Azure Administrator 104: Azure Service Endpoint  أمن شبكتك بسهولة مع">[21] Azure Administrator 104: Azure Service Endpoint</a> · <a href="https://www.youtube.com/watch?v=XC0PgpyY2fk" title="[22] AZ 104: Azure Private Link  | احمي بياناتك زي المحترفين">[22] AZ 104: Azure Private Link</a> <span class="dur">Total video runtime: 53m 50s (pauses and practice are extra).</span></span></div>
+<div class="io"><span class="k read">Read</span><span class="v"><strong>Start here — AZ-104 unit:</strong> <a href="https://learn.microsoft.com/en-us/training/modules/configure-storage-accounts/7-secure-storage-endpoints">Secure storage endpoints</a>.<br><strong>Targeted reference:</strong> <a href="https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-service-endpoints-overview/">Service endpoints overview</a> · <a href="https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview/">Private endpoints overview</a>. Read purpose, access restrictions and DNS integration; full DNS study follows on day 12.<br><strong>Reading scope:</strong> Start with the short AZ-104 storage-path unit linked first; do not study the whole storage module today. Then use the two documentation pages only for: purpose, subnet/service-side configuration, public versus private destination addressing, source-IP changes, DNS integration, and effective-route validation. Do not follow every related link or memorise the service/region lists. Full DNS reading remains on day 12.<br><strong>Video-to-reading match:</strong> Moe's description for [21] links to the service-endpoint overview already above; [22] has no direct Microsoft source link in the retrieved description. The module unit and private-endpoint reference are plan-selected supplements.</span></div>
+<div class="io"><span class="k build">Build</span><span class="v"><strong>Microsoft tutorial (gap supplement):</strong> <a href="https://learn.microsoft.com/en-us/azure/virtual-network/tutorial-restrict-network-access-to-resources">Restrict network access with service endpoints</a>. Follow its setup through allow/deny validation and cleanup; it supplies the VNet, storage and test-VM prerequisites. This is a hands-on tutorial, not extra broad reading. For private endpoints use <a href="https://learn.microsoft.com/en-us/azure/private-link/tutorial-private-endpoint-storage-portal">Microsoft's private endpoint tutorial</a>, including its VM, Bastion and private-DNS setup. If DNS understanding blocks you, complete that validation on day 12 as already allowed. Do not deploy a second copy if your video practice already demonstrates the same result. Allow time for provisioning; these are not 20-minute exercises.</span></div><p><strong>Done when:</strong> Explain public versus private addressing and show which client can reach the account. Repetition with the video is welcome; no extra duplicate official lab. Budget 5–6 hours.</p></div></div>
+<div class="dayrow" data-progress-id="sep9-day-11"><div class="stamp"><div class="dnum">11</div><div class="ddate">Tue 15 Sep</div></div><div class="body"><h4>Load Balancer and Application Gateway</h4><div class="io"><span class="k watch">Watch</span><span class="v"><a href="https://www.youtube.com/watch?v=zF3p1a-5ym4" title="[23] AZ 104: Mastering Azure Load Balancer بالعربي">[23] AZ 104: Mastering Azure Load Balancer</a> · <a href="https://www.youtube.com/watch?v=2_trynzz3NY" title="[24] AZ 104: Secure &amp; Scale with Azure Application Gateway بالعربي">[24] AZ 104: Secure &amp; Scale with Azure Application Gateway</a> <span class="dur">Total video runtime: 65m 46s (pauses and practice are extra).</span></span></div>
+<div class="io"><span class="k read">Read</span><span class="v"><a href="https://learn.microsoft.com/en-us/training/modules/intro-to-azure-load-balancer/">Introduction to Azure Load Balancer</a> · <a href="https://learn.microsoft.com/en-us/training/modules/intro-to-azure-application-gateway/">Introduction to Application Gateway</a>. Focus on frontend, backend, probes, rules and L4 versus L7.<br><strong>Reading scope:</strong> AZ-104 networking-path modules: read the teaching units and complete the knowledge checks/assessments where provided. Focus on frontend/backend, probes and rules, public/internal load balancing, and Layer 4 versus Layer 7. Application Gateway implementation detail beyond the module is optional; keep Moe's video order.<br><strong>Video-to-reading match:</strong> [24] links to an older Configure Azure Application Gateway training URL whose availability could not be verified. Use the current Introduction to Azure Application Gateway module above. [23] has no direct Microsoft source link in its retrieved description. This does not mean its video lacks practical coverage.</span></div>
+<div class="io"><span class="k build">Build</span><span class="v"><a href="https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/Instructions/Labs/LAB_06-Implement_Network_Traffic_Management.html">Official Lab 06</a> — <strong>Task 1 setup, then Task 2 Load Balancer.</strong> Download the files referenced by the lab from the official repository; Task 1 deploys the required network and web VMs, so no earlier Lab Desk environment is assumed. Verify the backend/probe and traffic result. Task 3 Application Gateway remains optional hands-on, matching the existing plan. Clean up the identified lab resources after testing; check quota and cost first.</span></div><p><strong>Done when:</strong> Explain probe failure, public versus internal LB and path-based routing. Budget 5–6 hours.</p></div></div>
+<div class="dayrow" data-progress-id="sep9-day-12"><div class="stamp"><div class="dnum">12</div><div class="ddate">Sun 20 Sep</div></div><div class="body"><h4>DNS and Bastion</h4><div class="io"><span class="k watch">Watch</span><span class="v"><a href="https://www.youtube.com/watch?v=4WopYGPEU8w" title="[25] AZ 104 : Azure Public &amp; Private DNS Explained with Demo شرح">[25] AZ 104 : Azure Public &amp; Private DNS Explained with Demo</a> <span class="dur">Total video runtime: 26m 47s (pauses and practice are extra).</span></span></div>
+<div class="io"><span class="k read">Read</span><span class="v"><a href="https://learn.microsoft.com/en-us/training/modules/host-domain-azure-dns/">Host your domain on Azure DNS</a> · <a href="https://learn.microsoft.com/en-us/azure/dns/private-dns-overview/">Private DNS overview</a> · <a href="https://learn.microsoft.com/en-us/azure/bastion/bastion-overview/">Bastion overview</a><br><span class="dur"><strong>Official Learn time:</strong> 43m · Targeted docs: ~20–30m estimate.</span><br><strong>Reading scope:</strong> Primary: the Azure DNS module from the AZ-104 networking path, including its teaching units and assessment. Targeted documentation: Private DNS — zone records, VNet links, autoregistration and name resolution; Bastion — purpose, connection model, required subnet and relevant SKU differences. Do not read the entire DNS or Bastion documentation tree.<br><strong>Video-to-reading match:</strong> From [25]: <a href="https://learn.microsoft.com/en-us/azure/dns/private-dns-virtual-network-links">Private DNS virtual network links</a>. Use it for registration versus resolution links after the DNS module; it is targeted clarification, not a second full DNS course.</span></div>
+<div class="io"><span class="k build">Reinforce</span><span class="v">Apply the DNS and Bastion demonstrations alongside Moe. Complete only the exercises, knowledge checks and assessment contained in the assigned Microsoft Learn material. If a Learn exercise requires unavailable or costly resources, read its steps and explain the expected result; do not replace it with a separate external lab today.</span></div><p><strong>Done when:</strong> Explain private-name resolution from a linked VNet; explain public delegation, VNet links and Bastion access. <strong>Planned study time:</strong> 2–3 hours.</p></div></div>
+<div class="dayrow" data-progress-id="sep9-day-13"><div class="stamp"><div class="dnum">13</div><div class="ddate">Mon 21 Sep</div></div><div class="body"><h4>App Service plans</h4><div class="io"><span class="k watch">Watch</span><span class="v"><a href="https://www.youtube.com/watch?v=WY7yhV1PpvQ" title="[26] AZ 104 : Mastering Azure App Services Arabic شرح بالعربي">[26] AZ 104 : Mastering Azure App Services</a> <span class="dur">Total video runtime: 53m 33s (pauses and practice are extra).</span></span></div>
+<div class="io"><span class="k read">Read</span><span class="v"><a href="https://learn.microsoft.com/en-us/training/modules/configure-app-service-plans/">Configure App Service plans</a><br><span class="dur"><strong>Official Learn time:</strong> 24m.</span><br><strong>Reading scope:</strong> Primary: this AZ-104 compute-path module. Read its teaching units and assessment: plan choice, pricing-tier capabilities, scale up/out and autoscale. Do not memorise live prices. Practical instructions count toward Build, not a second mandatory workload.<br><strong>Video-to-reading match:</strong> From [26]: <a href="https://learn.microsoft.com/en-us/azure/app-service/overview">App Service overview</a>, <a href="https://learn.microsoft.com/en-us/azure/app-service/quickstart-dotnetcore?tabs=net80&amp;pivots=development-environment-vs">.NET quickstart</a>, and <a href="https://learn.microsoft.com/en-us/azure/app-service/environment/ase-multi-tenant-comparison">ASE versus multitenant comparison</a>. Keep the scheduled Learn module primary. The quickstart is an alternative demo, not another compulsory deployment; the ASE comparison is optional context, not an ASE lab.</span></div>
+<div class="io"><span class="k build">Reinforce</span><span class="v">Apply along with Moe's App Service demonstration. Complete the exercises, knowledge checks and module assessment inside Microsoft Learn. Stop after the core plan, scaling and pricing-tier outcomes; no separate GitHub or Lab Desk lab is required during the content pass.</span></div><p><strong>Done when:</strong> Explain scale up versus scale out and plan-level billing. Keep the app only until tomorrow if the cost is acceptable; record its resource group. <strong>Planned study time:</strong> 2–2.5 hours.</p></div></div>
+<div class="dayrow" data-progress-id="sep9-day-14"><div class="stamp"><div class="dnum">14</div><div class="ddate">Mon 21 Sep</div></div><div class="body"><h4>App Service configuration</h4><div class="io"><span class="k watch">Watch</span><span class="v"><a href="https://www.youtube.com/watch?v=zTBFvV5aoZQ" title="[27] AZ 104: Unlock the Power of Azure App Services Arabic">[27] AZ 104: Unlock the Power of Azure App Services</a> <span class="dur">Total video runtime: 52m 34s (pauses and practice are extra).</span></span></div>
+<div class="io"><span class="k read">Read</span><span class="v"><a href="https://learn.microsoft.com/en-us/training/modules/configure-azure-app-services/">Configure Azure App Service</a> — configuration, slots, TLS/custom DNS, backup and networking.<br><span class="dur"><strong>Official Learn time:</strong> 44m.</span><br><strong>Reading scope:</strong> Primary: this AZ-104 compute-path module. Read its teaching units and assessment, focusing on app settings, deployment slots/swap, TLS/custom domains, backup, networking and monitoring. Use linked documentation only to answer a concrete question or complete today’s Learn exercise.<br><strong>Video-to-reading match:</strong> [27]'s description explicitly covers slots, backup, monitoring and custom domains, but includes no direct Microsoft reference URL. The module above is the plan's matching reading, not a source attributed to Moe.</span></div>
+<div class="io"><span class="k build">Reinforce</span><span class="v">Apply slots, configuration, backup, monitoring and custom-domain concepts with Moe where demonstrated. Complete the Microsoft Learn exercises/assessment. For features that require a paid tier, owned domain or extra infrastructure, understand the configuration and prerequisites without building an additional environment today.</span></div><p><strong>Done when:</strong> Trace a slot swap and explain settings that stick to a slot. Record any optional backup/networking exercise separately; it does not block this day's core lab completion. <strong>Planned study time:</strong> 2.5–3.5 hours.</p></div></div>
+<div class="dayrow" data-progress-id="sep9-day-15"><div class="stamp"><div class="dnum">15</div><div class="ddate">Tue 22 Sep</div></div><div class="body"><h4>Virtual machines and disks</h4><div class="io"><span class="k watch">Watch</span><span class="v"><a href="https://www.youtube.com/watch?v=kGprqXcjw2o" title="[28] AZ 104: Simplifying Azure: Understanding VMs, Containers, and ACI شرح بالعربي">[28] AZ 104: Simplifying Azure: Understanding VMs, Containers, and ACI</a> · <a href="https://www.youtube.com/watch?v=Kl3xq3I7YqA" title="[29] AZ 104: Introduction to Azure VMs Arabic | شرح">[29] AZ 104: Introduction to Azure VMs</a> <span class="dur">Total video runtime: 61m 44s (pauses and practice are extra).</span></span></div>
+<div class="io"><span class="k read">Read</span><span class="v"><a href="https://learn.microsoft.com/en-us/training/modules/intro-to-azure-virtual-machines/">Introduction to Azure VMs</a> · <a href="https://learn.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview/">Managed disks overview</a><br><span class="dur"><strong>Official Learn time:</strong> 1h 07m · Targeted managed-disks reading: ~15–20m estimate.</span><br><strong>Reading scope:</strong> Primary: the VM module from the AZ-104 compute path. Complete its teaching units/assessment. Supplement only the managed-disks overview sections explaining OS/data/temp disks, disk types and sizing, snapshots and encryption distinctions relevant to your VM exercise. Do not follow every performance or architecture link.<br><strong>Video-to-reading match:</strong> [29] links directly to both Introduction to Azure VMs (today) and Configure VM availability (day 16). [28] links to Docker documentation rather than Microsoft training; its VM/container/ACI foundation is reused on day 19.</span></div>
+<div class="io"><span class="k build">Reinforce</span><span class="v">Apply the VM creation/configuration shown by Moe, then complete the assigned Microsoft Learn exercises and assessment. Use only small disposable resources if an exercise requires Azure. No separate official lab is required during this content pass.</span></div><p><strong>Done when:</strong> Explain VM resize/deallocation, disks and zone placement, and complete the module VM exercise. <strong>Planned study time:</strong> 3.5–4.5 hours.</p></div></div>
+<div class="dayrow" data-progress-id="sep14-vm-consolidation"><div class="stamp"><div class="dnum">16</div><div class="ddate">Tue 22 Sep</div></div><div class="body"><h4>VM availability, moves and Scale Sets</h4><div class="io"><span class="k watch">Watch</span><span class="v"><strong>Continue from Moe [29], not a missing-video claim.</strong> <a href="https://www.youtube.com/watch?v=Kl3xq3I7YqA" title="[29] AZ 104: Introduction to Azure VMs Arabic | شرح">[29] AZ 104: Introduction to Azure VMs</a> was watched on day 15; its description links to today's VM-availability module. Recall the explanation before reading; replay only if needed. No new numbered course episode is assigned.</span></div>
+<div class="io"><span class="k read">Read</span><span class="v"><a href="https://learn.microsoft.com/en-us/training/modules/configure-virtual-machine-availability/">Configure VM availability</a> then <a href="https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/overview/">VMSS overview</a>. Compare zones/sets and orchestration/autoscale. Review <a href="https://learn.microsoft.com/en-us/azure/virtual-machines/move-vm/">VM moves</a> and encryption-at-host prerequisites. This follows the VM/disks day; no new Moe videos.<br><span class="dur"><strong>Official Learn time:</strong> 41m · Targeted docs: ~20–30m estimate.</span><br><strong>Reading scope:</strong> Primary: Configure virtual machine availability from the AZ-104 compute path — maintenance, sets, fault/update domains, zones, vertical/horizontal scaling, Scale Sets and autoscale units, then its assessment. VMSS is already taught here: the overview link is optional clarification, not another required chapter. For VM moves, read only prerequisites/restrictions and how resource-group/subscription moves differ from region moves. Review host-encryption prerequisites only as needed for the existing task.<br><strong>Video-to-reading match:</strong> Configure VM availability above is explicitly linked in [29]'s description. This day extends that video; it is not evidence that Moe omitted availability. Full replay is unnecessary if you remember the explanation.</span></div>
+<div class="io"><span class="k build">Reinforce</span><span class="v">Continue from Moe [29] and complete the VM availability Microsoft Learn exercises/assessment, including the Scale Set and autoscale concepts. Reuse a disposable resource only when Learn asks for it; skip external VM labs for now.</span></div><p><strong>Done when:</strong> Explain availability, host encryption, move restrictions and autoscale; describe a scale rule and verify its configuration in Learn or the portal when available. <strong>Planned study time:</strong> 1.5–2.5 hours.</p></div></div></div></div><div class="week calendar-day"><div class="week-head"><span class="wn">Fri 25 Sep</span><h3>Cloud Shell, ARM and Bicep</h3><span class="wd">5–6h</span></div><div class="week-body"><div class="dayrow" data-study-date="Fri 25 Sep" data-progress-id="sep9-day-18"><div class="stamp"><div class="dnum">17</div><div class="ddate">Topic 17 · Part 1</div></div><div class="body"><h4>ARM templates and Cloud Shell</h4><div class="io"><span class="k watch">Watch</span><span class="v"><strong>Supplementary ARM study day.</strong> No separately titled ARM episode was found among the 41 visible AZ-104 course episodes. Optional familiar foundation: <a href="https://www.youtube.com/watch?v=oE-uqaHe6rM">Moe AZ-900 [10] — Describe Azure Resource Manager</a>. This is not an AZ-104 episode or a required full replay. Use today's Learn module for the administrator-level template exercise.</span></div>
+<div class="io"><span class="k read">Read</span><span class="v"><strong>Core AZ-104 prerequisites:</strong> <a href="https://learn.microsoft.com/en-us/training/modules/intro-to-azure-cloud-shell/">Introduction to Cloud Shell</a> → <a href="https://learn.microsoft.com/en-us/training/modules/create-azure-resource-manager-template-vs-code/">Deploy infrastructure with JSON ARM templates</a>. Complete both modules and their embedded exercises/assessments.<br><strong>Focus:</strong> select a subscription, Bash versus PowerShell, parameters/defaults, variables, resources, API versions, dependencies and outputs; change and deploy an existing small template.<br><strong>Targeted exam supplement:</strong> <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/templates/export-template-portal">Export an ARM template</a>: read “Choose the right export option” and “Export template after deployment”. Understand current-resource export versus deployment history.<br><span class="dur">Published module total: 63m → your study allowance: ~126m. Export reading and setup/recall allowance: 25–45m. Exercises are counted once.</span></span></div>
+<div class="io"><span class="k build">Reinforce</span><span class="v">Complete the hands-on portions embedded in the Cloud Shell and ARM Microsoft Learn modules: inspect, modify and deploy the small template they use. This is part of Learn, not an additional MicrosoftLearning GitHub lab.</span></div><p><strong>Done when:</strong> Read parameters, variables, dependencies, outputs and deployment errors. <strong>Your topic budget:</strong> 2.5–3 hours, including exercises once.</p></div></div>
+<div class="dayrow" data-study-date="Fri 25 Sep" data-progress-id="sep9-day-19"><div class="stamp"><div class="dnum">18</div><div class="ddate">Topic 18 · Part 2</div></div><div class="body"><h4>Bicep</h4><div class="io"><span class="k watch">Watch</span><span class="v"><strong>Supplementary Bicep study day.</strong> No separately titled Bicep episode was found among the 41 visible AZ-104 course episodes. This is a plan-added Learn/lab session, not a claim that no video ever mentions Bicep. No new numbered Moe episode is assigned.</span></div>
+<div class="io"><span class="k read">Read</span><span class="v"><strong>Core, selected to cover the official Bicep objective:</strong> <a href="https://learn.microsoft.com/en-us/training/modules/build-first-bicep-file/">Build your first Bicep file</a>, including exercises and assessment.<br><strong>Targeted units, not a second full module:</strong> open <a href="https://learn.microsoft.com/en-us/training/modules/build-reusable-bicep-files-parameters/">Build reusable Bicep files using parameters</a> and study only “Provide values using parameter files” and “Secure your parameters”. Revisit “Understand parameters” only if the first module left a gap. Its remaining duplicate exercises are optional.<br><strong>Conversion:</strong> <a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/decompile">Decompile ARM JSON to Bicep</a>: read the CLI example and limitations. Convert a small existing template locally, inspect the result and understand why manual fixes can be needed.<br><strong>Scope:</strong> interpret/change/deploy a small file, parameters, variables, resource references/dependencies and outputs. No whole advanced Bicep course.<br><span class="dur">First module published time: 56m → ~112m for you. Selected parameter units + conversion: 35–55m study estimate; short recall/setup allowance included in the topic total.</span></span></div>
+<div class="io"><span class="k build">Reinforce</span><span class="v">Complete the first Bicep module exercises and assessment. Use the selected parameter units to fill gaps, then inspect one small ARM-to-Bicep conversion. Reuse the module example; a second full parameters-module lab is optional.</span></div><p><strong>Done when:</strong> Interpret, modify and deploy a small Bicep file; inspect an ARM-to-Bicep conversion. <strong>Your topic budget:</strong> 2.5–3 hours, including exercises once.</p></div></div></div></div>
+<div class="week calendar-day"><div class="week-head"><span class="wn">Sat 26 Sep</span><h3>ACR, ACI and Container Apps</h3><span class="wd">3–3.5h</span></div><div class="week-body"><div class="dayrow" data-study-date="Sat 26 Sep" data-progress-id="sep9-day-20"><div class="stamp"><div class="dnum">19</div><div class="ddate">Topic 19 · Part 1</div></div><div class="body"><h4>ACR, ACI and Container Apps</h4><div class="io"><span class="k watch">Watch</span><span class="v"><strong>Continue from Moe [28].</strong> <a href="https://www.youtube.com/watch?v=kGprqXcjw2o" title="[28] AZ 104: Simplifying Azure: Understanding VMs, Containers, and ACI شرح بالعربي">[28] AZ 104: Simplifying Azure: Understanding VMs, Containers, and ACI</a> was watched on day 15 in course order. Recall its VM/container/ACI comparison, then use today's Learn material for the remaining details. No mandatory full replay or new numbered episode.</span></div>
+<div class="io"><span class="k read">Read</span><span class="v"><strong>Core AZ-104 compute module:</strong> <a href="https://learn.microsoft.com/en-us/training/modules/configure-azure-container-instances/">Configure Azure Container Instances</a>, including “Review Azure Container Apps”, its exercise and assessment. Recall Moe [28]; no full replay is required.<br><strong>ACR supplement:</strong> <a href="https://learn.microsoft.com/en-us/azure/container-registry/container-registry-intro/">Registry overview</a> for registry/repository/image/tag and authentication, then <a href="https://learn.microsoft.com/en-us/azure/container-registry/container-registry-get-started-portal">Create an ACR in the portal</a> for the creation and management workflow. Read and trace the portal steps; an additional deployment is optional.<br><strong>Container Apps supplement:</strong> <a href="https://learn.microsoft.com/en-us/azure/container-apps/quickstart-portal">Portal quickstart</a> for environment, image, CPU/memory, ingress and deployment; <a href="https://learn.microsoft.com/en-us/azure/container-apps/scale-app">Scaling</a> for min/max replicas, HTTP scaling and scale-to-zero. Read those sections and portal examples only. Understand revisions and distinguish ACI container-group sizing/restart policies from Container Apps autoscaling.<br><span class="dur">Published module time: 37m → ~74m for you. Targeted docs/portal walkthrough: ~75–105m; recall/setup allowance: 20–30m. Total ~3–3.5h. No separate external lab.</span></span></div>
+<div class="io"><span class="k build">Reinforce</span><span class="v">Complete the ACI exercise embedded in Learn and its assessment. Explain how to create an ACR and provision a Container App in the portal from the linked Microsoft walkthroughs. Explain image source/authentication, CPU/memory and scaling settings. Record any hands-on gap for final review; do not build an extra multi-lab environment.</span></div><p><strong>Done when:</strong> Explain registry versus runtime, CPU/memory sizing, restart behaviour and Container Apps scaling. <strong>Your topic budget:</strong> 3–3.5 hours, including exercises once.</p></div></div></div></div>
+<div class="week calendar-day"><div class="week-head"><span class="wn">Sun 27 Sep</span><h3>Storage accounts, redundancy and encryption</h3><span class="wd">2.5–3h</span></div><div class="week-body"><div class="dayrow" data-study-date="Sun 27 Sep" data-progress-id="sep9-day-21"><div class="stamp"><div class="dnum">20</div><div class="ddate">Topic 20 · Part 1</div></div><div class="body"><h4>Storage accounts, redundancy and encryption</h4><div class="io"><span class="k watch">Watch</span><span class="v"><a href="https://www.youtube.com/watch?v=bLE_XNBvptM" title="[30] AZ 104: What are the Types of Azure Cloud Storage شرح">[30] AZ 104: What are the Types of Azure Cloud Storage</a> <span class="dur">Total video runtime: 42m 46s (pauses and practice are extra).</span></span></div>
+<div class="io"><span class="k read">Read</span><span class="v"><a href="https://learn.microsoft.com/en-us/training/modules/configure-storage-accounts/">Configure storage accounts</a> · <a href="https://learn.microsoft.com/en-us/training/modules/configure-storage-security/5-determine-storage-service-encryption">Determine Azure Storage encryption</a> · <a href="https://learn.microsoft.com/en-us/training/modules/configure-storage-security/6-create-customer-managed-keys">Create customer-managed keys</a><br><span class="dur"><strong>Official Learn time:</strong> 54m including the selected security units.</span><br><strong>Reading scope:</strong> Primary: Configure storage accounts from the AZ-104 storage path — account types, services, redundancy, access and assessment. The endpoint unit was studied on day 10: skim it rather than restarting. For encryption, read only the two linked units from Configure Azure Storage security (encryption and customer-managed keys). Mark those as previously read when reaching day 22; the broader encryption reference is optional.<br><strong>Video-to-reading match:</strong> [30] links directly to Configure storage accounts above and <a href="https://learn.microsoft.com/en-us/azure/storage/common/storage-introduction">Introduction to Azure Storage</a>. Use the overview only to clarify the service types; do not duplicate the module.</span></div>
+<div class="io"><span class="k build">Reinforce</span><span class="v">Apply the storage-account creation/configuration demonstrated by Moe, then complete the Configure storage accounts exercises and assessment. Use the encryption units for understanding and their embedded activity only; no separate storage lab or CMK deployment is required today.</span></div><p><strong>Done when:</strong> Choose redundancy, understand read access and regional failure, and distinguish Microsoft-managed from customer-managed keys. <strong>Your topic budget:</strong> 2.5–3 hours, including exercises once.</p></div></div></div></div>
+<div class="week calendar-day"><div class="week-head"><span class="wn">Mon 28 Sep</span><h3>Blob protection and Azure Files</h3><span class="wd">4–5h</span></div><div class="week-body"><div class="dayrow" data-study-date="Mon 28 Sep" data-progress-id="sep9-day-22"><div class="stamp"><div class="dnum">21</div><div class="ddate">Topic 21 · Part 1</div></div><div class="body"><h4>Blob protection and Azure Files</h4><div class="io"><span class="k watch">Watch</span><span class="v"><a href="https://www.youtube.com/watch?v=dkdmmJVAWEU" title="[31] AZ 104: How to Configure Azure Blob storage Versioning بالعربي">[31] AZ 104: How to Configure Azure Blob storage Versioning</a> · <a href="https://www.youtube.com/watch?v=g6v4ZW7iYyo" title="[32] [Arabic] AZ 104: How to configure Azure Blob Replication ? Arabic شرح">[32] AZ 104: How to configure Azure Blob Replication ?</a> <span class="dur">Total video runtime: 41m 20s (pauses and practice are extra).</span></span></div>
+<div class="io"><span class="k read">Read</span><span class="v"><a href="https://learn.microsoft.com/en-us/training/modules/configure-blob-storage/">Configure Blob Storage</a> · <a href="https://learn.microsoft.com/en-us/training/modules/configure-azure-files-file-sync/">Configure Azure Files</a><br><span class="dur"><strong>Official Learn time:</strong> 1h 46m across both modules.</span><br><strong>Reading scope:</strong> Primary: the Blob Storage and Azure Files modules from the AZ-104 storage path. Read teaching units and assessments, covering containers, tiers, versioning, replication, lifecycle, file shares, snapshots and soft delete. Read Azure File Sync for context if included, without adding an on-premises deployment. Complete the embedded exercises once; no additional external lab is scheduled.<br><strong>Video-to-reading match:</strong> [31]'s description also mentions lifecycle management and cross-account blob copying, not just versioning. [32] is the replication episode. Neither retrieved description includes a direct Microsoft source URL; the modules above are the matching plan-selected reading.</span></div>
+<div class="io"><span class="k build">Reinforce</span><span class="v">Apply versioning and replication with Moe where demonstrated, then complete the Blob Storage and Azure Files module exercises/assessments. Do not build a second account or a separate replication lab unless the Learn exercise itself requires it.</span></div><p><strong>Done when:</strong> Demonstrate or explain restoring a previous blob/file version; explain lifecycle, tiers, soft delete and replication prerequisites. <strong>Your topic budget:</strong> 4–5 hours, including exercises once.</p></div></div></div></div>
+<div class="week calendar-day"><div class="week-head"><span class="wn">Tue 29 Sep</span><h3>Storage access, identity and transfer</h3><span class="wd">2.5–3h</span></div><div class="week-body"><div class="dayrow" data-study-date="Tue 29 Sep" data-progress-id="sep9-day-23"><div class="stamp"><div class="dnum">22</div><div class="ddate">Topic 22 · Part 1</div></div><div class="body"><h4>Storage access, identity and transfer</h4><div class="io"><span class="k watch">Watch</span><span class="v"><a href="https://www.youtube.com/watch?v=kT7VW4OqfBE" title="[33] [Arabic] ِAZ 104 : How to Manage Azure Storage Access  ? شرح">[33] AZ 104 : How to Manage Azure Storage Access ?</a> · <a href="https://www.youtube.com/watch?v=-pBVloB-8cU" title="[34] [Arabic] AZ 104: How to install Azure Storage Explorer ? شرح">[34] AZ 104: How to install Azure Storage Explorer ?</a> <span class="dur">Total video runtime: 37m 28s (pauses and practice are extra).</span></span></div>
+<div class="io"><span class="k read">Read</span><span class="v"><a href="https://learn.microsoft.com/en-us/training/modules/configure-storage-security/">Configure storage security</a> · <a href="https://learn.microsoft.com/en-us/azure/storage/files/storage-files-active-directory-overview/">Azure Files identity-based access</a> · <a href="https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10/">AzCopy guide</a><br><span class="dur"><strong>Official Learn time:</strong> 34m · Targeted Files/AzCopy docs: ~20–30m estimate.</span><br><strong>Reading scope:</strong> Primary: Configure Azure Storage security from the AZ-104 storage path. Read SAS types/parameters, keys, security practices and assessment; briefly recall the encryption/CMK units already read on day 20. Azure Files supplement: supported identity sources, prerequisites, share-level RBAC versus file/directory permissions. AzCopy supplement: install/authenticate, copy and sync examples needed for the small practice. Do not read the entire command reference or identity deployment documentation.<br><strong>Video-to-reading match:</strong> [33] and [34] have no direct Microsoft reference URL in their retrieved descriptions. Keep the matched Learn module, Files-identity reference and small AzCopy exercise; do not infer that all of those extensions are demonstrated in these videos.</span></div>
+<div class="io"><span class="k build">Reinforce</span><span class="v">Apply storage access and Storage Explorer with Moe, then complete the storage-security exercises/assessment and the small AzCopy activity in the assigned Microsoft material. Azure Files identity deployment and external SAS labs are deferred until assessment results show a gap.</span></div><p><strong>Done when:</strong> Explain how an eligible service SAS is revoked through its policy; explain data-plane roles and share/file permissions. <strong>Your topic budget:</strong> 2.5–3 hours, including exercises once.</p></div></div></div></div>
+<div class="week calendar-day"><div class="week-head"><span class="wn">Wed 30 Sep</span><h3>Azure Monitor: metrics and logs</h3><span class="wd">3.5–4h</span></div><div class="week-body"><div class="dayrow" data-study-date="Wed 30 Sep" data-progress-id="sep9-day-24"><div class="stamp"><div class="dnum">23</div><div class="ddate">Topic 23 · Part 1</div></div><div class="body"><h4>Azure Monitor: metrics and logs</h4><div class="io"><span class="k watch">Watch</span><span class="v"><a href="https://www.youtube.com/watch?v=7qTgd-LK1Do" title="[35] [Arabic] AZ 104: What is and How to configure Azure Monitor ? شرح">[35] AZ 104: What is and How to configure Azure Monitor ?</a> · <a href="https://www.youtube.com/watch?v=eoz3CLee9qI" title="[36] (Arabic) AZ 104: How to configure Azure Monitor Logs &amp; Workbooks? شرح">[36] AZ 104: How to configure Azure Monitor Logs &amp; Workbooks?</a> <span class="dur">Total video runtime: 79m 33s (pauses and practice are extra).</span></span></div>
+<div class="io"><span class="k read">Read</span><span class="v"><a href="https://learn.microsoft.com/en-us/training/modules/monitor-azure-vm-using-diagnostic-data/">Monitor VMs using Azure Monitor</a> · <a href="https://learn.microsoft.com/en-us/azure/azure-monitor/overview/">Azure Monitor overview</a><br><span class="dur"><strong>Official Learn time:</strong> 35m · Targeted docs: ~15–20m estimate.</span><br><strong>Reading scope:</strong> Primary: Monitor your Azure virtual machines with Azure Monitor from the AZ-104 monitor/backup path — host monitoring, Metrics Explorer, VM insights, agent/client metrics and event logs. The Azure Monitor overview is only a top-up for metrics versus logs, workspaces, diagnostic destinations and storage/network Insights; skip its broader integrations. Detailed alerts follow in the next dated block.<br><strong>Video-to-reading match:</strong> [35] links to the Azure Monitor overview already above. [36] links to <a href="https://learn.microsoft.com/en-us/azure/azure-monitor/logs/log-analytics-simple-mode">Log Analytics simple mode</a> and the <a href="https://learn.microsoft.com/en-us/kusto/query/?view=microsoft-fabric">KQL reference</a>: use only queries needed for the demo/lab, not the entire reference. Its older Analyze monitoring data with KQL path currently redirects to the Azure documentation landing page, so it is not assigned as required reading.</span></div>
+<div class="io"><span class="k build">Reinforce</span><span class="v">Apply Azure Monitor, Logs and Workbooks with Moe, then complete the assigned Microsoft Learn exercise/assessment. Run only the queries required by the video or Learn material; no separate monitoring lab environment is required today.</span></div><p><strong>Done when:</strong> Explain metrics versus logs, diagnostic settings, agents/data collection and destinations. <strong>Your topic budget:</strong> 3.5–4 hours, including exercises once.</p></div></div></div></div>
+<div class="week calendar-day"><div class="week-head"><span class="wn">Thu 1 Oct</span><h3>Alerts, Network Watcher and Azure Backup</h3><span class="wd">~5h target</span></div><div class="week-body"><div class="dayrow" data-study-date="Thu 1 Oct" data-progress-id="sep9-day-25"><div class="stamp"><div class="dnum">24</div><div class="ddate">Topic 24 · Part 1</div></div><div class="body"><h4>Alerts, processing rules and Network Watcher</h4><div class="io"><span class="k watch">Watch</span><span class="v"><a href="https://www.youtube.com/watch?v=PaHZx9WWAR0" title="[37] Arabic - AZ 104: How to configure Azure Monitor Alerts ? شرح">[37] - AZ 104: How to configure Azure Monitor Alerts ?</a> · <a href="https://www.youtube.com/watch?v=xlDDGqNKAvI" title="[38] Arabic - AZ 104 Azure Monitor: Setting Up Action Groups &amp; Processing Rules">[38] - AZ 104 Azure Monitor: Setting Up Action Groups &amp; Processing Rules</a> · <a href="https://www.youtube.com/watch?v=JiRiLmdmDZ0" title="[39] Arabic - AZ 104 Azure Monitor Pricing: How Much Does It REALLY Cost?شرح">[39] - AZ 104 Azure Monitor Pricing: How Much Does It REALLY Cost?</a> <span class="dur">Total video runtime: 66m 32s (pauses and practice are extra).</span></span></div>
+<div class="io"><span class="k read">Read</span><span class="v"><a href="https://learn.microsoft.com/en-us/training/modules/intro-to-azure-network-watcher/">Introduction to Network Watcher</a> · <a href="https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/alerts-overview/">Azure Monitor alerts overview</a><br><span class="dur"><strong>Official Learn time:</strong> 18m · Targeted alerts docs: ~20–30m estimate.</span><br><strong>Reading scope:</strong> Primary: Introduction to Azure Network Watcher from the AZ-104 networking path, including available knowledge checks. Alerts documentation is a targeted supplement: metric versus log alerts, scope/condition/action, action groups and alert processing rules. Read the Connection Monitor overview and basic source/destination/test configuration in the Network Watcher material; the full hands-on lab remains for weakness-driven review. No obligation to study every alert type, API or linked product.<br><strong>Video-to-reading match:</strong> [39] links to <a href="https://azure.microsoft.com/en-us/pricing/details/monitor/">Azure Monitor pricing</a>; check the cost model relevant to your lab rather than memorising prices. [37] and [38] have no direct Microsoft reference URL in their retrieved descriptions.</span></div>
+<div class="io"><span class="k build">Reinforce</span><span class="v">Apply alerts, action groups and processing rules with Moe, then complete the assigned Microsoft Learn knowledge checks/assessment. Use a Learn-provided exercise if present; The full Connection Monitor hands-on exercise and official monitoring lab are deferred until the question platform identifies a networking or monitoring weakness.</span></div><p><strong>Done when:</strong> Explain an alert trigger, suppression/action groups and the Network Watcher diagnostic flow. <strong>Your topic budget:</strong> 3–4 hours, including exercises once.</p></div></div>
+<div class="dayrow" data-study-date="Thu 1 Oct" data-progress-id="sep9-day-26"><div class="stamp"><div class="dnum">25</div><div class="ddate">Topic 25 · Part 2</div></div><div class="body"><h4>Azure Backup</h4><div class="io"><span class="k watch">Watch</span><span class="v"><a href="https://www.youtube.com/watch?v=r3o1WIHCI5o" title="[40] Arabic - AZ 104 Why Azure Backup ?شرح بالعربي">[40] - AZ 104 Why Azure Backup ?</a> <span class="dur">Total video runtime: 15m 34s (pauses and practice are extra).</span></span></div>
+<div class="io"><span class="k read">Read</span><span class="v"><a href="https://learn.microsoft.com/en-us/training/modules/intro-to-azure-backup/">Introduction to Azure Backup</a> · <a href="https://learn.microsoft.com/en-us/training/modules/protect-virtual-machines-with-azure-backup/">Protect VMs with Azure Backup</a> — compare Recovery Services vault and Backup vault.<br><span class="dur"><strong>Official Learn time:</strong> 53m across both modules.</span><br><strong>Reading scope:</strong> Primary: both Backup modules in the AZ-104 monitor/backup path. Read the teaching units and assessments, focusing on vaults, backup policy/retention, recovery points and restore. Use documentation only to distinguish Recovery Services vault versus Backup vault and locate backup reports/alerts if the modules do not settle those points. Site Recovery is tomorrow, not an extra chapter today.<br><strong>Video-to-reading match:</strong> [40]'s description introduces Azure Backup but provides no direct Microsoft reference URL. The detailed backup modules and embedded exercises are plan-selected follow-through; do not treat the short introductory video as proof of full practical coverage.</span></div>
+<div class="io"><span class="k build">Reinforce</span><span class="v">Apply the Azure Backup explanation with Moe, then complete both assigned Microsoft Learn modules, their assessments and any embedded exercise. A full VM backup/restore lab is deferred until the question platform shows that practical validation is needed.</span></div><p><strong>Done when:</strong> Explain recovery points and restore flow, retention policy, vault choice and backup monitoring. <strong>Your topic budget:</strong> 2–2.5 hours, including exercises once.</p></div></div></div></div>
+<div class="week calendar-day"><div class="week-head"><span class="wn">Fri 2 Oct</span><h3>Site Recovery and finish any remaining content</h3><span class="wd">2.5–3.5h + overflow</span></div><div class="week-body"><div class="dayrow" data-study-date="Fri 2 Oct" data-progress-id="sep9-day-27"><div class="stamp"><div class="dnum">26</div><div class="ddate">Topic 26 · Part 1</div></div><div class="body"><h4>Site Recovery and recovery validation</h4><div class="io"><span class="k watch">Watch</span><span class="v"><strong>Recovery extension after Moe [40].</strong> Yesterday's <a href="https://www.youtube.com/watch?v=r3o1WIHCI5o" title="[40] Arabic - AZ 104 Why Azure Backup ?شرح بالعربي">[40] - AZ 104 Why Azure Backup ?</a> is the backup foundation. Today's Site Recovery tutorials are plan-selected extensions; no separately titled Site Recovery episode was found in this playlist. Do not rewatch the full backup video automatically.</span></div>
+<div class="io"><span class="k read">Read</span><span class="v"><a href="https://learn.microsoft.com/en-us/azure/site-recovery/azure-to-azure-tutorial-enable-replication/">Enable Azure-to-Azure replication</a> · <a href="https://learn.microsoft.com/en-us/azure/site-recovery/azure-to-azure-tutorial-dr-drill/">Run a disaster-recovery drill</a><br><span class="dur"><strong>Official Learn time:</strong> No official module duration · Two targeted tutorials: ~60–90m estimate.</span><br><strong>Reading scope:</strong> Targeted official tutorials rather than a whole documentation collection: read prerequisites, source/target settings and enable-replication steps in the first tutorial; then test-failover preparation, isolated test network, validation and cleanup in the second. Understand recovery points and test failover versus failover. Do not add VMware/Hyper-V migration, on-premises agents or unrelated recovery architectures.</span></div>
+<div class="io"><span class="k build">Reinforce</span><span class="v">Complete the two targeted Microsoft Site Recovery tutorials as the reading/practical walkthrough for this uncovered extension. Follow an embedded exercise only if it is reasonably available in your disposable subscription. Full replication and test-failover labs are deferred to weakness-driven practice because provisioning can outlast the content deadline.</span></div><p><strong>Done when:</strong> Explain replication, recovery points, test failover versus failover, and recovery networking. <strong>Your topic budget:</strong> 2.5–3.5 hours, including exercises once.</p></div></div></div></div><div class="week"><div class="week-head"><h3>Practice and readiness</h3></div><div class="week-body"><div class="dayrow" data-progress-id="sep14-review-with-routes"><div class="stamp"><div class="dnum">27</div><div class="ddate">Review session 1</div></div><div class="body"><h4>Practice assessment and error review</h4><div class="io"><span class="k build">Build</span><span class="v"><strong>Diagnostic first.</strong> Take the official Microsoft practice assessment and a fresh set from a practice-question resource. Review every wrong answer and every correct guess. Map each one to an official AZ-104 objective; do not start with a predetermined routes lab unless routes/peering appears as a real weakness.</span></div><div class="io"><span class="k watch">Watch</span><span class="v">Optional final course episode: <a href="https://www.youtube.com/watch?v=jKj8Y5HG76Y" title="[41]ازاي تستعد لامتحان Azure Administrator؟ 🚀💻">[41] How to prepare for the Azure Administrator exam (English translation of the Arabic title)</a>. Exam preparation guidance, not a new technical module. Then John Savill only for specific errors, not a mandatory second course.</span></div>
+<div class="io"><span class="k read">Read</span><span class="v"><a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-104">Official objectives</a> — check coverage, then take the <a href="https://learn.microsoft.com/en-us/credentials/certifications/practice-assessments-for-microsoft-certifications">Microsoft practice assessment</a>. The old September buffer sessions have been removed; do not assume uncompleted work is done.<br><strong>Reading scope:</strong> Review only: compare the official objectives against your completed learning; take the assessment and review wrong answers plus correct guesses. Open the matching Microsoft Learn unit for each gap. Do not restart all learning paths or treat repeated questions as fresh evidence.</span></div>
+<div class="io"><span class="k build">Build</span><span class="v">Use legitimate practice questions from your bank; review both wrong answers and correct guesses. Record the concept, evidence and why other options fail. A repeated score alone is not proof of readiness.</span></div><p><strong>Done when:</strong> Build a prioritised error list. Budget 4–6 hours.</p></div></div>
+<div class="dayrow" data-progress-id="sep9-day-31"><div class="stamp"><div class="dnum">28</div><div class="ddate">Review session 2</div></div><div class="body"><h4>Repair weak domains</h4><div class="io"><span class="k watch">Watch</span><span class="v">Optional Savill explanation for the weakest two topics.</span></div>
+<div class="io"><span class="k read">Read</span><span class="v">Re-read targeted Learn units, not whole paths automatically.<br><strong>Reading scope:</strong> Review only: choose units linked to the two weakest topics identified yesterday. Use documentation only for an unresolved setting or behaviour. Re-reading an entire learning path is not required.</span></div>
+<div class="io"><span class="k build">Build</span><span class="v">Repeat the relevant <a href="https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/">official Microsoft lab tasks</a> for your two weakest areas, first recalling the solution without instructions. Check setup prerequisites before starting. Do not repeat a whole lab if one task resolves the gap. Review CLI/PowerShell examples and ARM/Bicep interpretation. Lab Desk is not required.</span></div><p><strong>Done when:</strong> Explain and demonstrate the concepts that caused yesterday's mistakes. Budget 4–6 hours.</p></div></div>
+<div class="dayrow" data-progress-id="sep9-day-32"><div class="stamp"><div class="dnum">29</div><div class="ddate">Review session 3</div></div><div class="body"><h4>Final mock and readiness decision</h4><div class="io"><span class="k watch">Watch</span><span class="v">No new teaching required.</span></div>
+<div class="io"><span class="k read">Read</span><span class="v">Review your comparison notes and official exam guidance.<br><strong>Reading scope:</strong> Review only: comparison notes, remaining error explanations and official appointment/ID guidance. No new course or broad documentation reading today.</span></div>
+<div class="io"><span class="k build">Build</span><span class="v">Take a fresh timed practice set, then review errors and guesses. Verify you can explain key decisions and perform core tasks. If meaningful gaps remain, move the target instead of rushing.</span></div><p><strong>Done when:</strong> Choose an exam date only after the readiness review. Check booking/location/ID requirements directly before booking; nothing has been booked for you.</p></div></div></div></div><div class="week"><div class="week-head"><h3>Exam preparation</h3></div><div class="week-body"><div class="dayrow" data-progress-id="sep9-rest"><div class="stamp"><div class="dnum">—</div><div class="ddate">Sat 3 Oct</div></div><div class="body"><h4>Rest and preparation</h4></div></div><div class="dayrow" data-progress-id="sep9-exam"><div class="stamp"><div class="dnum">→</div><div class="ddate">To be decided</div></div><div class="body"><h4>Exam date after readiness review</h4></div></div></div></div></div></section>
+
+<section id="reference"><div class="sec-head"><h2>Sources and study guidance</h2></div><p>Use <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-104">the official AZ-104 objectives</a> to check coverage. Study with <a href="https://www.youtube.com/playlist?list=PLczK3J2J4clmeh328CC13dJrcALcSFZFb">Moe’s course</a> and the linked Microsoft Learn modules. Use <a href="https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/">official labs</a> for targeted practice. Progress is stored in this browser only; use Backup to transfer it between devices.</p></section><footer><p>AZ-104 study resources. Study time estimates are indicative; choose an exam date based on readiness.</p></footer>
+
+</div>
+
+<script>
+(function(){
+  var KEY='az104-public-progress-v1', REMOTE='data/progress.json';
+  var MONTH={Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11};
+  var store={}, stamp=0, ok=true, remote=null, timer=null, syncEl=null, readOnly=false;
+
+  function readLocal(){
+    try{
+      var raw=JSON.parse(localStorage.getItem(KEY)||'{}');
+      if(raw && typeof raw==='object' && raw.items){ store=raw.items||{}; stamp=+raw.updatedAt||0; }
+      else { store=raw||{}; stamp=0; }
+    }catch(e){ store={}; stamp=0; }
+  }
+  function writeLocal(){
+    try{ localStorage.setItem(KEY,JSON.stringify({items:store,updatedAt:stamp})); }
+    catch(e){ ok=false; }
+  }
+  var diagLines=[];
+  function diag(m){
+    diagLines.push(new Date().toLocaleTimeString()+'  '+m);
+    if(window.console&&console.log) console.log('[az104] '+m);
+    var el=document.getElementById('az104-diag');
+    if(el) el.textContent=diagLines.join('\n');
+  }
+  function status(t,cls){
+    if(!syncEl) return;
+    syncEl.textContent=t;
+    syncEl.className='pbar-sync'+(cls?' '+cls:'');
+  }
+  function pushRemote(){
+    if(!remote||readOnly) return;
+    status('Saving\u2026');
+    var body={};
+    body[REMOTE]=JSON.stringify({items:store,updatedAt:stamp});
+    var t0=Date.now();
+    remote.publish(body).then(function(res){
+      diag('publish ok, version='+(res&&res.version));
+      status('Synced','okc');
+    })['catch'](function(err){
+      var c=(err&&err.code)||'no-code';
+      diag('publish FAILED code='+c+' msg='+((err&&err.message)||'')+' after '+(Date.now()-t0)+'ms');
+      if(c==='conflict'){ status('conflict \u2014 reloading'); return; }
+      if(c==='rate_limited'){ status('rate_limited','warnc'); schedule(15000); return; }
+      readOnly=true;
+      status('save failed: '+c,'warnc');
+    });
+  }
+
+  function schedule(ms){
+    if(!remote||readOnly) return;
+    if(timer) clearTimeout(timer);
+    timer=setTimeout(pushRemote, ms||2500);
+  }
+  function save(){ stamp=Date.now(); writeLocal(); schedule(); }
+
+  readLocal();
+  var SEEDED='az104-public-unseeded-v1';
+  function seedDoneDays(){
+    try{ if(localStorage.getItem(SEEDED)) return; }catch(e){}
+    var seeded=0;
+    rows.forEach(function(r){
+      if(!r.classList.contains('day-was-done')) return;
+      (r._items||[]).forEach(function(it){ if(!store[it.k]){ store[it.k]=true; seeded++; } });
+    });
+    if(seeded){ stamp=Date.now(); writeLocal(); }
+    try{ localStorage.setItem(SEEDED,'1'); }catch(e){}
+  }
+
+  var rows=[].slice.call(document.querySelectorAll('.dayrow'));
+  var items=[];
+
+  rows.forEach(function(row,ri){
+    var stamp=row.querySelector('.ddate');
+    var num=row.querySelector('.dnum');
+    var id=row.getAttribute('data-progress-id')||('d'+ri);
+    row.dataset.id=id;
+
+    if(stamp){
+      var m=/(\d{1,2})\s+([A-Z][a-z]{2})/.exec(row.getAttribute('data-study-date')||stamp.textContent||'');
+      if(m && MONTH[m[2]]!==undefined){ row.dataset.date=new Date(2026,MONTH[m[2]],+m[1]).toDateString(); }
+    }
+
+    var mine=[];
+    [].slice.call(row.querySelectorAll('.io')).forEach(function(io,ii){
+      var b=document.createElement('button');
+      b.className='ck'; b.type='button'; b.setAttribute('role','checkbox');
+      var k=id+'-i'+ii; b.dataset.k=k;
+      var lab=io.querySelector('.k');
+      b.setAttribute('aria-label',(lab?lab.textContent.trim():'Task')+', day '+(num?num.textContent.trim():''));
+      io.insertBefore(b,io.firstChild);
+      mine.push({k:k,el:b,row:io});
+    });
+
+    if(!mine.length){
+      var ps=[].slice.call(row.querySelectorAll('.body>p'));
+      ps.forEach(function(par,pi){
+        var wrap=document.createElement('span');
+        while(par.firstChild){ wrap.appendChild(par.firstChild); }
+        var b=document.createElement('button');
+        b.className='ck'; b.type='button'; b.setAttribute('role','checkbox');
+        var k=id+'-p'+pi; b.dataset.k=k;
+        b.setAttribute('aria-label','Task, day '+(num?num.textContent.trim():''));
+        par.className='tickable'; par.appendChild(b); par.appendChild(wrap);
+        mine.push({k:k,el:b,row:par});
+      });
+    }
+
+    if(mine.length && stamp){
+      var meta=document.createElement('div');
+      meta.className='daymeta';
+      meta.innerHTML='<span class="daycount"></span>';
+      stamp.parentNode.appendChild(meta);
+      row._count=meta.querySelector('.daycount');
+    }
+    row._items=mine;
+    items=items.concat(mine);
+  });
+
+  // sticky progress bar
+  var sec=document.querySelector('.weeks');
+  if(sec){
+    var bar=document.createElement('div');
+    bar.className='pbar';
+    bar.innerHTML='<div class="pbar-top"><span class="pbar-pct">0%</span>'+
+      '<span class="pbar-txt"></span>'+
+      '<span class="pbar-sync"></span>'+
+      '<span class="pbar-spacer"></span>'+
+      '<button class="pbar-today" type="button">Next unfinished</button>'+
+      '<button class="pbar-bk" type="button">Backup</button>'+
+      '<button class="pbar-reset" type="button">Reset</button></div>'+
+      '<div class="pbar-track"><div class="pbar-fill"></div></div>'+
+      '<div class="bk"><p><strong>Backup and restore.</strong> Progress is saved locally in this browser. It does not automatically follow you to another browser or file path. Copy the text below somewhere safe now and again; paste it back to restore.</p>'+
+      '<textarea spellcheck="false" aria-label="Progress backup data"></textarea>'+
+      '<div class="bk-row"><button type="button" data-a="copy">Select all</button>'+
+      '<button type="button" data-a="restore">Restore from box</button>'+
+      '<button type="button" data-a="sync">Sync now</button>'+
+      '<span class="msg"></span></div>'+
+      '<p style="margin-top:.3rem">Sync log \u2014 send me this if it is not working:</p>'+
+      '<pre id="az104-diag" style="font-family:var(--f-mono);font-size:.68rem;line-height:1.5;white-space:pre-wrap;margin:0;color:var(--muted);max-height:11rem;overflow:auto"></pre>'+
+      '</div>';
+    sec.parentNode.insertBefore(bar,sec);
+    bar.querySelector('.pbar-reset').addEventListener('click',function(){
+      if(!confirm('Clear all progress? This cannot be undone.')) return;
+      store={}; save(); items.forEach(function(it){ set(it,false); }); render();
+    });
+    var pct=bar.querySelector('.pbar-pct'), txt=bar.querySelector('.pbar-txt'), fill=bar.querySelector('.pbar-fill');
+    var jump=bar.querySelector('.pbar-today');
+    syncEl=bar.querySelector('.pbar-sync');
+    var bk=bar.querySelector('.bk'), bkta=bk.querySelector('textarea'), bkmsg=bk.querySelector('.msg');
+    bar.querySelector('.pbar-bk').addEventListener('click',function(){
+      var open=bk.getAttribute('data-open')==='1';
+      bk.setAttribute('data-open',open?'0':'1');
+      if(!open){ bkta.value=JSON.stringify(store); bkmsg.textContent=''; }
+    });
+    bk.addEventListener('click',function(e){
+      var a=e.target.getAttribute&&e.target.getAttribute('data-a');
+      if(a==='copy'){ bkta.select(); bkta.setSelectionRange(0,bkta.value.length);
+        try{ document.execCommand('copy'); bkmsg.textContent='Copied.'; }
+        catch(err){ bkmsg.textContent='Selected \u2014 copy it yourself.'; } }
+      if(a==='sync'){
+        if(!remote){ bkmsg.textContent='No server connection.'; diag('manual sync: remote is null'); }
+        else { diag('manual sync requested'); stamp=Date.now(); writeLocal(); pushRemote(); }
+      }
+      if(a==='restore'){
+        try{
+          var o=JSON.parse(bkta.value);
+          if(!o||typeof o!=='object'||Array.isArray(o)) throw 0;
+          store=o; save();
+          items.forEach(function(it){ set(it,!!store[it.k]); });
+          render(); bkmsg.textContent='Restored.';
+        }catch(err){ bkmsg.textContent='That is not a valid backup.'; }
+      }
+    });
+    jump.addEventListener('click',function(){
+      var t=nextUnfinished();
+      if(!t){ status('All done','okc'); return; }
+      var barH=(bar&&bar.getBoundingClientRect().height)||0;
+      var y=t.getBoundingClientRect().top+window.scrollY-barH-16;
+      try{ window.scrollTo({top:Math.max(0,y),behavior:'smooth'}); }
+      catch(e){ window.scrollTo(0,Math.max(0,y)); }
+      t.classList.add('flash');
+      setTimeout(function(){ t.classList.remove('flash'); },1400);
+    });
+  }
+
+  function nextUnfinished(){
+    for(var i=0;i<rows.length;i++){
+      var r=rows[i];
+      if(!(r._items&&r._items.length)) continue;
+      if(r.classList.contains('day-was-done')) continue;
+      var all=r._items.every(function(it){ return store[it.k]; });
+      if(!all) return r;
+    }
+    return null;
+  }
+  function showJump(){
+    if(typeof jump==='undefined'||!jump) return;
+    var t=nextUnfinished();
+    jump.hidden=false;
+    jump.textContent = t ? ('Next: topic '+(t.querySelector('.dnum')||{textContent:''}).textContent.trim()) : 'All done';
+  }
+
+  function set(it,v){
+    it.el.setAttribute('aria-checked',v?'true':'false');
+    it.row.classList.toggle('done',v);
+  }
+
+  function render(){
+    var done=0;
+    items.forEach(function(it){ if(store[it.k]) done++; });
+    var total=items.length||1;
+    var p=Math.round(done/total*100);
+    if(pct){ pct.textContent=p+'%'; txt.textContent=done+' of '+total+' tasks done'; fill.style.width=p+'%'; }
+
+    var todayStr=new Date().toDateString();
+    rows.forEach(function(row){
+      var mine=row._items||[];
+      var d=mine.filter(function(it){ return store[it.k]; }).length;
+      if(row._count) row._count.textContent=mine.length?(d+'/'+mine.length):'';
+      row.classList.toggle('day-done', mine.length>0 && d===mine.length);
+      if(row.dataset.date===todayStr && !row.querySelector('.today-tag')){
+        row.classList.add('today');
+        var t=document.createElement('span'); t.className='today-tag'; t.textContent='Today';
+        var meta=row.querySelector('.daymeta')||row.querySelector('.stamp');
+        if(meta) meta.appendChild(t);
+      }
+    });
+
+    var weeks=[].slice.call(document.querySelectorAll('.week'));
+    weeks.forEach(function(w){
+      var mine=[]; [].slice.call(w.querySelectorAll('.dayrow')).forEach(function(r){ mine=mine.concat(r._items||[]); });
+      var d=mine.filter(function(it){ return store[it.k]; }).length;
+      var h=w.querySelector('.week-head'); if(!h||!mine.length) return;
+      var sp=h.querySelector('.wprog');
+      if(!sp){ sp=document.createElement('span'); sp.className='wprog'; h.appendChild(sp); }
+      sp.textContent=d+'/'+mine.length;
+    });
+    showJump();
+  }
+
+  // Public edition starts without personal completion data.
+
+  items.forEach(function(it){
+    set(it,!!store[it.k]);
+    it.el.addEventListener('click',function(){
+      store[it.k]=!store[it.k];
+      if(!store[it.k]) delete store[it.k];
+      set(it,!!store[it.k]); save(); render();
+    });
+    it.el.addEventListener('keydown',function(e){
+      if(e.key===' '||e.key==='Enter'){ e.preventDefault(); it.el.click(); }
+    });
+  });
+
+  render();
+
+  // ---- server-side persistence, so progress follows you across browsers ----
+  (function(){
+    diag('boot. href='+location.href);
+    diag('baseURI='+document.baseURI);
+    if(!(window.claude && typeof window.claude.use==='function')){
+      diag('window.claude.use MISSING \u2014 local mode');
+      status('This browser only','warnc'); return;
+    }
+    diag('window.claude.use present, calling use("artifact")');
+    status('Connecting\u2026');
+    window.claude.use('artifact').then(function(a){
+      if(!a){ diag('use("artifact") resolved NULL'); status('not available','warnc'); return; }
+      remote=a;
+      diag('use("artifact") ok. methods='+Object.keys(a).join(',')+
+           ' publish='+(typeof a.publish));
+      var u=new URL(REMOTE, document.baseURI).href;
+      diag('fetching '+u);
+      return fetch(u,{cache:'no-store'}).then(function(r){
+        diag('fetch status='+r.status);
+        return r.ok? r.json() : null;
+      })['catch'](function(e){ diag('fetch threw: '+e); return null; });
+    }).then(function(data){
+      if(!remote) return;
+      if(data && data.items){
+        diag('remote data found, updatedAt='+data.updatedAt+' local='+stamp+
+             ' remoteItems='+Object.keys(data.items).length);
+        if((+data.updatedAt||0) > stamp){
+          store=data.items; stamp=+data.updatedAt||0; writeLocal();
+          items.forEach(function(it){ set(it,!!store[it.k]); });
+          render(); diag('adopted remote progress');
+        } else { diag('local is newer, keeping local'); schedule(800); }
+      } else {
+        diag('no remote data yet');
+        if(Object.keys(store).length){ diag('pushing local up'); schedule(800); }
+      }
+      status('Synced','okc');
+    })['catch'](function(e){ diag('connect chain threw: '+e); status('This browser only','warnc'); });
+  })();
+
+  try{ localStorage.setItem(KEY+'-probe','1'); localStorage.removeItem(KEY+'-probe'); }
+  catch(e){ ok=false; }
+  if(!ok && sec){
+    var w=document.createElement('div'); w.className='nostore';
+    w.textContent='This viewer is blocking local storage, so ticks will not survive a reload. Save the HTML file and open it from your own browser to keep progress.';
+    sec.parentNode.insertBefore(w,sec);
+  }
+})();
+</script>
+</body>
+</html>
